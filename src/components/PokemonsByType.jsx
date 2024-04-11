@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const ListPokemons = () => {
+const PokemonsByType = () => {
+  const { type } = useParams();
+
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
-    fetch("https://pokebuildapi.fr/api/v1/pokemon")
+    fetch("https://pokebuildapi.fr/api/v1/pokemon/type/" + type)
       .then((response) => {
         return response.json();
       })
@@ -16,18 +18,14 @@ const ListPokemons = () => {
 
   return (
     <section>
-      <h2>Les pokemons :</h2>
+      <h2>Les pokemons du type {type} :</h2>
 
       {pokemons.map((pokemon) => {
         return (
           <article key={pokemon.id}>
             <h3>{pokemon.name}</h3>
             {pokemon.apiTypes.map((type) => {
-              return (
-                <Link to={`/pokemons-by-type/${type.name}`} key={type.name}>
-                  {type.name}
-                </Link>
-              );
+              return <p key={type.name}>{type.name}</p>;
             })}
 
             <Link to={`/pokemon-details/${pokemon.id}`}>Voir le détail du pokemon</Link>
@@ -38,4 +36,4 @@ const ListPokemons = () => {
   );
 };
 
-export default ListPokemons;
+export default PokemonsByType;

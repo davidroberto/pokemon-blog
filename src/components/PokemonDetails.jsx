@@ -13,7 +13,7 @@ const PokemonDetails = () => {
       .then((data) => {
         setPokemon(data);
       });
-  }, []);
+  }, [pokemonId]);
 
   return (
     <section>

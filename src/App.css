@@ -1,0 +1,15 @@
+.header-nav {
+  background-color: lightcoral;
+  display: flex;
+}
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background-color: lightcoral;
+}
+
+.logo-nav {
+  width: 200px;
+  margin: 30px;
+}

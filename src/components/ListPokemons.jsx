@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ListPokemons = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -21,6 +22,7 @@ const ListPokemons = () => {
         return (
           <article key={pokemon.id}>
             <h3>{pokemon.name}</h3>
+            <Link to={`/pokemon-details/${pokemon.id}`}>Voir le détail du pokemon</Link>
           </article>
         );
       })}

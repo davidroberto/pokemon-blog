@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const ListPokemons = () => {
+const RandomTeam = () => {
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
-    fetch("https://pokebuildapi.fr/api/v1/pokemon")
+    fetch("https://pokebuildapi.fr/api/v1/random/team")
       .then((response) => {
         return response.json();
       })
@@ -16,24 +16,14 @@ const ListPokemons = () => {
 
   return (
     <section>
-      <h2>Les pokemons :</h2>
+      <h2>Team aléatoire : </h2>
 
       {pokemons.map((pokemon) => {
         return (
           <article key={pokemon.id}>
             <h3>{pokemon.name}</h3>
             {pokemon.apiTypes.map((type) => {
-              return (
-                <div key={type}>
-                  <Link to={`/pokemons-by-type/${type.name}`} key={type.name}>
-                    {type.name}
-                  </Link>
-
-                  <Link to={`/resistance/${type.name}`} key={type.name}>
-                    Les pokemons résistants à ce type
-                  </Link>
-                </div>
-              );
+              return <p key={type.name}>{type.name}</p>;
             })}
 
             <Link to={`/pokemon-details/${pokemon.id}`}>Voir le détail du pokemon</Link>
@@ -44,4 +34,4 @@ const ListPokemons = () => {
   );
 };
 
-export default ListPokemons;
+export default RandomTeam;

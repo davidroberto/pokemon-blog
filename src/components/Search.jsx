@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const Search = () => {
@@ -6,13 +6,15 @@ const Search = () => {
 
   const [pokemonFound, setPokemonFound] = useState(null);
 
-  fetch("https://pokebuildapi.fr/api/v1/pokemon/" + searchText)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      setPokemonFound(data);
-    });
+  useEffect(() => {
+    fetch("https://pokebuildapi.fr/api/v1/pokemon/" + searchText)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setPokemonFound(data);
+      });
+  }, []);
 
   return (
     <section>

@@ -14,7 +14,7 @@ const Search = () => {
       .then((data) => {
         setPokemonFound(data);
       });
-  }, []);
+  }, [searchText]);
 
   return (
     <section>

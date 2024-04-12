@@ -1,53 +1,32 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Search = () => {
-  const [pokemon, setPokemon] = useState(null);
-  const [error, setError] = useState(null);
+  const { searchText } = useParams();
 
-  const handleSearch = (event) => {
-    event.preventDefault();
+  const [pokemonFound, setPokemonFound] = useState(null);
 
-    const searchText = event.target.searchPokemon.value;
-
-    if (searchText === "") {
-      setError("Merci de rentrer un pokemon");
-      return;
-    }
-
-    fetch("https://pokebuildapi.fr/api/v1/pokemon/" + searchText)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setPokemon(data);
-      })
-      .catch((error) => {
-        setError("Le nom du pokemon est invalide");
-      });
-  };
+  fetch("https://pokebuildapi.fr/api/v1/pokemon/" + searchText)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      setPokemonFound(data);
+    });
 
   return (
     <section>
-      <h2>Rechercher un pokémon : </h2>
+      <p>Résultats de recherche : </p>
 
-      <form onSubmit={handleSearch}>
-        <input type="text" name="searchPokemon" />
-
-        <input type="submit" value="Chercher" />
-      </form>
-
-      {error && <p>{error}</p>}
-
-      {pokemon && (
-        <article key={pokemon.id}>
-          <h3>{pokemon.name}</h3>
-          <img src={pokemon.image} alt={pokemon.name} />
-          {pokemon.apiTypes.map((type) => {
+      {pokemonFound && (
+        <article key={pokemonFound.id}>
+          <h3>{pokemonFound.name}</h3>
+          <img src={pokemonFound.image} alt={pokemonFound.name} />
+          {pokemonFound.apiTypes.map((type) => {
             return <p key={type.name}>{type.name}</p>;
           })}
 
-          <Link to={`/pokemon-details/${pokemon.id}`}>Voir le détail du pokemon</Link>
+          <Link to={`/pokemon-details/${pokemonFound.id}`}>Voir le détail du pokemon</Link>
         </article>
       )}
     </section>

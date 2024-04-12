@@ -20,7 +20,7 @@ const ListPokemons = () => {
 
       {pokemons.map((pokemon) => {
         return (
-          <article key={pokemon.id}>
+          <article key={pokemon.id} className={`container-pokemon-${pokemon.apiTypes[0].name}`}>
             <h3>{pokemon.name}</h3>
             {pokemon.apiTypes.map((type) => {
               return (

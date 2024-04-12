@@ -17,7 +17,7 @@ function App() {
         <Route path="/pokemon-details/:pokemonId" element={<PokemonDetailsPage />} />
         <Route path="/pokemons-by-type/:type" element={<PokemonsByTypePage />} />
         <Route path="/random-team" element={<RandomTeamPage />} />
-        <Route path="/search" element={<SearchPage />} />
+        <Route path="/search/:searchText" element={<SearchPage />} />
 
         <Route path="/resistance/:type" element={<PokemonResistancePage />} />
       </Routes>

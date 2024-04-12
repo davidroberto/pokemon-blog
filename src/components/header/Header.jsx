@@ -1,6 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./header.scss";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const pokemonSearch = event.target.searchPokemon.value;
+
+    navigate("/search/" + pokemonSearch);
+  };
+
   return (
     <header>
       <nav className="header-nav">
@@ -15,6 +25,12 @@ const Header = () => {
             <Link to="/">Accueil</Link>
           </li>
         </ul>
+
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="searchPokemon" />
+
+          <input type="submit" value="Chercher" />
+        </form>
       </nav>
     </header>
   );

@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import PokemonResistance from "../components/PokemonResistance";
 
 const PokemonResistancePage = () => {

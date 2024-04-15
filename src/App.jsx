@@ -6,7 +6,7 @@ import HomePage from "./pages/public/HomePage";
 import RandomTeamPage from "./pages/public/RandomTeamPage";
 import SearchPage from "./pages/public/SearchPage";
 import PokemonResistancePage from "./pages/public/PokemonsResistancePage";
-import DashboardPage from "./pages/admin/DashboardPage";
+import AdminListPokemonsPage from "./pages/admin/AdminListPokemonsPage";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path="/search/:searchText" element={<SearchPage />} />
         <Route path="/resistance/:type" element={<PokemonResistancePage />} />
 
-        <Route path="/admin/pokemons" element={<DashboardPage />} />
+        <Route path="/admin/pokemons" element={<AdminListPokemonsPage />} />
       </Routes>
     </BrowserRouter>
   );

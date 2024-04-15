@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const DashboardPage = () => {
+const AdminListPokemons = () => {
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
@@ -12,6 +12,12 @@ const DashboardPage = () => {
         setPokemons(data);
       });
   }, []);
+
+  const handleDeletePokemon = (event, pokemonId) => {
+    fetch("https://pokebuildapi.fr/api/v1/pokemon/" + pokemonId, {
+      method: "DELETE",
+    });
+  };
 
   return (
     <main>
@@ -28,7 +34,13 @@ const DashboardPage = () => {
               <td>{pokemon.name}</td>
               <td>
                 <button>Modifier</button>
-                <button>Supprimer</button>
+                {/* 
+					si je veux passer un parametre autre que event
+					à fonction d'event listener, je doit créer une fonction
+					flêchée qui appelle ma fonction. Sinon la fonction d'event listener
+					sera executée même si l'utilisateur ne clique pas
+				 */}
+                <button onClick={(event) => handleDeletePokemon(event, pokemon.id)}>Supprimer</button>
               </td>
             </tr>
           );
@@ -38,4 +50,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default AdminListPokemons;

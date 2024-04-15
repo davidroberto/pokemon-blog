@@ -15,9 +15,26 @@ const UpdatePokemon = () => {
       });
   }, [pokemonId]);
 
+  const handleUpdateSubmit = (event) => {
+    event.preventDefault();
+
+    const name = event.target.name.value;
+    const generation = event.target.generation.value;
+
+    const json = JSON.stringify({
+      name: name,
+      generation: generation,
+    });
+
+    fetch("https://pokebuildapi.fr/api/v1/pokemon/update/" + pokemonId, {
+      method: "PATCH",
+      body: json,
+    });
+  };
+
   return (
     <section>
-      <form>
+      <form onSubmit={handleUpdateSubmit}>
         <div>
           <label>
             Nom :

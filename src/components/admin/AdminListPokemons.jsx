@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AdminListPokemons = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -33,7 +34,7 @@ const AdminListPokemons = () => {
             <tr key={pokemon.id}>
               <td>{pokemon.name}</td>
               <td>
-                <button>Modifier</button>
+                <Link to={`/admin/pokemons/update/${pokemon.id}`}>Modifier</Link>
                 {/* 
 					si je veux passer un parametre autre que event
 					à fonction d'event listener, je doit créer une fonction

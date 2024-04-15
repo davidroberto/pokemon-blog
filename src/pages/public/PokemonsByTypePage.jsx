@@ -1,5 +1,5 @@
-import Header from "../components/header/Header";
-import PokemonsByType from "../components/PokemonsByType";
+import Header from "../../components/public/header/Header";
+import PokemonsByType from "../../components/public/PokemonsByType";
 
 const PokemonsByTypePage = () => {
   return (

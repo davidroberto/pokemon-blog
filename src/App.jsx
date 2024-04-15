@@ -1,13 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/HomePage";
-import PokemonDetailsPage from "./pages/PokemonDetailsPage";
-import PokemonsByTypePage from "./pages/PokemonsByTypePage";
-import RandomTeamPage from "./pages/RandomTeamPage";
-import SearchPage from "./pages/SearchPage";
-import PokemonResistancePage from "./pages/PokemonsResistancePage";
-
-///resistance/Pierre
+import PokemonsByTypePage from "./pages/public/PokemonsByTypePage";
+import PokemonDetailsPage from "./pages/public/PokemonDetailsPage";
+import HomePage from "./pages/public/HomePage";
+import RandomTeamPage from "./pages/public/RandomTeamPage";
+import SearchPage from "./pages/public/SearchPage";
+import PokemonResistancePage from "./pages/public/PokemonsResistancePage";
+import DashboardPage from "./pages/admin/DashboardPage";
 
 function App() {
   return (
@@ -18,8 +17,9 @@ function App() {
         <Route path="/pokemons-by-type/:type" element={<PokemonsByTypePage />} />
         <Route path="/random-team" element={<RandomTeamPage />} />
         <Route path="/search/:searchText" element={<SearchPage />} />
-
         <Route path="/resistance/:type" element={<PokemonResistancePage />} />
+
+        <Route path="/admin/pokemons" element={<DashboardPage />} />
       </Routes>
     </BrowserRouter>
   );

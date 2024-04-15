@@ -1,5 +1,5 @@
-import Header from "../components/header/Header";
-import RandomTeam from "../components/RandomTeam";
+import Header from "../../components/public/header/Header";
+import RandomTeam from "../../components/public/RandomTeam";
 
 const RandomTeamPage = () => {
   return (

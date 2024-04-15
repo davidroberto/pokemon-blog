@@ -1,5 +1,5 @@
-import Header from "../components/header/Header";
-import ListPokemons from "../components/ListPokemons";
+import Header from "../../components/public/header/Header";
+import ListPokemons from "../../components/public/ListPokemons";
 
 const HomePage = () => {
   return (

@@ -2,20 +2,17 @@ const CreatePokemon = () => {
   const handleCreatePokemon = (event) => {
     event.preventDefault();
 
-    // je récupère les infos du pokemon à créer via le form
-    const name = event.target.name.value;
-    const generation = event.target.generation.value;
+    let formData = new FormData();
 
-    // je créé un objet avec les infos, que je transforme en json
-    const json = JSON.stringify({
-      name: name,
-      generation: generation,
-    });
+    formData.append("name", event.target.name.value);
+    formData.append("generation", event.target.generation.value);
+    formData.append("image", event.target.image.value);
 
     // je fais un appel fetch de type POST, avec en body le JSON
     fetch("https://pokebuildapi.fr/api/v1/pokemon", {
       method: "POST",
-      body: json,
+      body: formData,
+      headers: { "content-type": "multipart/form-data" },
     });
   };
 
@@ -23,7 +20,7 @@ const CreatePokemon = () => {
     <section>
       <h2>Créer un pokemon :</h2>
 
-      <form onSubmit={handleCreatePokemon}>
+      <form onSubmit={handleCreatePokemon} encType="multipart/form-data">
         <div>
           <label>
             Nom :
@@ -35,6 +32,13 @@ const CreatePokemon = () => {
           <label>
             Generation :
             <input type="text" name="generation" />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Image
+            <input type="file" name="image" />
           </label>
         </div>
 

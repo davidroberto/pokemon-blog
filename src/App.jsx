@@ -9,6 +9,7 @@ import PokemonResistancePage from "./pages/public/PokemonsResistancePage";
 import AdminListPokemonsPage from "./pages/admin/AdminListPokemonsPage";
 import CreatePokemonPage from "./pages/admin/CreatePokemonPage";
 import UpdatePokemonPage from "./pages/admin/UpdatePokemonPage";
+import LoginPage from "./pages/public/LoginPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/random-team" element={<RandomTeamPage />} />
         <Route path="/search/:searchText" element={<SearchPage />} />
         <Route path="/resistance/:type" element={<PokemonResistancePage />} />
+        <Route path="/login" element={<LoginPage />} />
 
         <Route path="/admin/pokemons" element={<AdminListPokemonsPage />} />
         <Route path="/admin/pokemons/create" element={<CreatePokemonPage />} />
